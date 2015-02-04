@@ -21,8 +21,14 @@ DrawWeather *weatherDrawer;
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
+        //Enable support for CoreAnimation
+        self.wantsLayer = true;
+        self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawCrossfade;
+        
         [self setAnimationTimeInterval:1/60.0];
         weatherDrawer = [[DrawWeather alloc] init];
+        
+        
     }
     return self;
 }
@@ -60,5 +66,8 @@ DrawWeather *weatherDrawer;
 {
     return nil;
 }
+
+
+
 
 @end

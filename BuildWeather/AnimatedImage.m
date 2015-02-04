@@ -68,8 +68,6 @@
         _drawPoint = _animationOrigin;
     }
     
-//
-    
     //2. compute the dirty rect
     
     //3. increment frame number

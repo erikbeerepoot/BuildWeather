@@ -65,7 +65,9 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
     
     //2. move cloud across sky
     int startX = frameCount*kSunnyAnimationSpeed;
-    [cloud1 drawAtPoint:NSMakePoint(startX, 300.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [cloud1 drawAtPoint:NSMakePoint(startX, 600.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+ 
+    //dummy comment
     frameCount++;
 }
 

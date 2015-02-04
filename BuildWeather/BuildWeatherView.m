@@ -13,12 +13,15 @@
 
 DrawWeather *weatherDrawer;
 
++(NSBackingStoreType)backingStoreType {
+    return NSBackingStoreBuffered;
+}
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
-        [self setAnimationTimeInterval:1/30.0];
+        [self setAnimationTimeInterval:1/60.0];
         weatherDrawer = [[DrawWeather alloc] init];
     }
     return self;
@@ -43,7 +46,8 @@ DrawWeather *weatherDrawer;
 }
 
 - (void)animateOneFrame
-{ 
+{
+    [self setNeedsDisplay:YES];
     return;
 }
 

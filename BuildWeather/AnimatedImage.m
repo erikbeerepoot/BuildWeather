@@ -31,10 +31,25 @@
     if(self = [super init]){
         _imageToDraw = [image copy];
         
+        
         //set drawing parameters
         _drawRect = rect;
-        _animationOrigin = NSMakePoint(_drawRect.origin.x - _imageToDraw.size.width,
-                                    _drawRect.origin.y - _imageToDraw.size.height);
+        
+        /* Animation origin depends on velocity. 4 cases:
+         * vel x: | vel y: |    origin   |
+         * ===============================
+         *    -       -      top right
+         *    -       +      bottom right
+         *    +       -      top left
+         *    +       +      bottom left
+         */
+        _velocity = NSMakePoint(1.0, 0);
+        _animationOrigin.x = (_velocity.x < FLT_EPSILON) ? _drawRect.origin.x :
+            (_drawRect.origin.x + (_velocity.x < 0.0 ? 1 : -1) * _imageToDraw.size.width);
+        
+        _animationOrigin.x = (_velocity.y < FLT_EPSILON) ? _drawRect.origin.y :
+            (_drawRect.origin.y + (_velocity.y < 0.0 ? 1 : -1) * _imageToDraw.size.height);
+        
         _drawPoint = _animationOrigin;
     }
     return self;
@@ -55,18 +70,15 @@
  *  Implements the logic for animating this image. The animation we do here is a simple translation, with opacity.
  */
 -(void)animate {
+    if( _velocity.x < FLT_EPSILON && _velocity.y < FLT_EPSILON) return;
+
     static long frameCount = 0;
     
-    //1a: Have we exceeded the bounds of the drawing rect to the right?
-    if( fabs((_drawRect.origin.x + _drawRect.size.width) - _drawPoint.x) < FLT_EPSILON ||
-        fabs((_drawRect.origin.y + _drawRect.size.height) - _drawPoint.y) < FLT_EPSILON){
+    //1. Check if we're out-of-bounds
+    if(NSPointInRect(_drawPoint,_drawRect)){
         _drawPoint = _animationOrigin;
     }
-    //1b: Have we exceeded the bounds of the drawing rect to the left?
-    else if( fabs(_drawPoint.x - (_drawRect.origin.x + _drawRect.size.width)) < FLT_EPSILON ||
-                  fabs(_drawPoint.y - (_drawRect.origin.y + _drawRect.size.height)) < FLT_EPSILON){
-        _drawPoint = _animationOrigin;
-    }
+    
     
     //2. compute the dirty rect
     

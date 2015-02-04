@@ -14,6 +14,7 @@
     
     //Drawing parameters
     NSRect   _drawRect;
+    NSRect   _dirtyRect;
     NSPoint  _animationOrigin;
     NSPoint  _drawPoint;
     
@@ -34,6 +35,7 @@
         
         //set drawing parameters
         _drawRect = rect;
+        _dirtyRect = NSZeroRect;
         
         /* Animation origin depends on velocity. 4 cases:
          * vel x: | vel y: |    origin   |
@@ -63,7 +65,7 @@
  *  @return The rect that fits the above description
  */
 -(NSRect)dirtyRect {
-    return NSZeroRect;
+    return _dirtyRect;
 }
 
 /**
@@ -79,10 +81,13 @@
         _drawPoint = _animationOrigin;
     }
     
-    
     //2. compute the dirty rect
+    _dirtyRect = NSMakeRect(_drawPoint.x,_drawPoint.y,_imageToDraw.size.width,_imageToDraw.size.height);
     
-    //3. increment frame number
+    //3. Draw!
+    [_imageToDraw drawAtPoint:_drawPoint fromRect:NSZeroRect operation:NSCompositeLuminosity fraction:0.9];
+    
+    //4. increment frame number
     frameCount++;
 }
 

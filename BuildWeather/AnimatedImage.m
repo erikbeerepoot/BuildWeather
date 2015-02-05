@@ -74,7 +74,7 @@
  *  Implements the logic for animating this image. The animation we do here is a simple translation, with opacity.
  */
 -(void)animate {
-    if( _velocity.x < FLT_EPSILON && _velocity.y < FLT_EPSILON) return;
+    if(_done || (_velocity.x < FLT_EPSILON && _velocity.y < FLT_EPSILON)) return;
     
     //1. Check if we're in bounds
     CGRect intersection = CGRectIntersection(CGRectMake(_drawPoint.x, _drawPoint.y, _imageToDraw.size.width,_imageToDraw.size.height),_drawRect);

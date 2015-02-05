@@ -48,12 +48,19 @@
          */
         #warning velocity hardcoded here
         _velocity = NSMakePoint(1.0, 0);
-        _animationOrigin.x = 1 + ((_velocity.x < FLT_EPSILON) ? _drawRect.origin.x :
-            (_drawRect.origin.x + (_velocity.x < 0.0 ? 1 : -1) * _imageToDraw.size.width));
-        
-        _animationOrigin.y = 1 + ((_velocity.y < FLT_EPSILON) ? _drawRect.origin.y :
-            (_drawRect.origin.y + (_velocity.y < 0.0 ? 1 : -1) * _imageToDraw.size.height));
-        
+        if(fabs(_velocity.x) < FLT_EPSILON){
+            //draw at the origin (i.e. just show image)
+            _animationOrigin.x = 1 + _drawRect.origin.x;
+            _animationOrigin.y = 1 + _drawRect.origin.y;
+        } else if(_velocity.x < 0){
+            //start by setting image offscreen on the right side of the screen
+            _animationOrigin.x = 1 + (_drawRect.size.width);
+            _animationOrigin.y = 1 + (_drawRect.origin.y);
+        } else {
+            //start by setting the image offscreen on the left size of the screen
+            _animationOrigin.x = 1 + (_drawRect.origin.x - + _imageToDraw.size.width);
+            _animationOrigin.y = 1 + (_drawRect.origin.y);
+        }
         _drawPoint = _animationOrigin;
     }
     return self;
@@ -74,7 +81,7 @@
  *  Implements the logic for animating this image. The animation we do here is a simple translation, with opacity.
  */
 -(void)animate {
-    if(_done || (_velocity.x < FLT_EPSILON && _velocity.y < FLT_EPSILON)) return;
+    if(_done || (fabs(_velocity.x)<FLT_EPSILON  && fabs(_velocity.y) < FLT_EPSILON)) return;
     
     //1. Check if we're in bounds
     CGRect intersection = CGRectIntersection(CGRectMake(_drawPoint.x, _drawPoint.y, _imageToDraw.size.width,_imageToDraw.size.height),_drawRect);
@@ -96,9 +103,15 @@
             copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
             copyRect.origin.y = _dirtyRect.origin.y;
             copyRect.size = _dirtyRect.size;
+        } else {
+            copyRect.origin.x = 0;
+            copyRect.origin.y = 0;
+            copyRect.size = _dirtyRect.size;
+            
+            origin.x = _drawRect.size.width - copyRect.size.width;
+            origin.y = _drawRect.origin.y;
         }
         [_imageToDraw drawAtPoint:origin fromRect:copyRect operation:NSCompositeLuminosity fraction:0.9];
-        
    }
     
     //4. increment frame number

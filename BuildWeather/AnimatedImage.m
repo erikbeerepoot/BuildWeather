@@ -47,7 +47,7 @@
          *    +       +      bottom left
          */
         #warning velocity hardcoded here
-        _velocity = NSMakePoint(1.0, 0);
+        _velocity = NSMakePoint(10.0, 0);
         if(fabs(_velocity.x) < FLT_EPSILON){
             //draw at the origin (i.e. just show image)
             _animationOrigin.x = 1 + _drawRect.origin.x;
@@ -93,17 +93,19 @@
         
         
         NSPoint origin;
-        origin.x = (_drawPoint.x > _drawRect.size.width ? _drawRect.size.width : (_drawPoint.x < 0 ? 0.0 : _drawPoint.x));
-        origin.y = (_drawPoint.y > _drawRect.size.height ? _drawRect.size.height : (_drawPoint.y < 0 ? 0.0 : _drawPoint.y));
         
         //Depending on direction of motion, we must copy different parts of the image
         NSRect copyRect = intersection;
         if(_velocity.x > 0){
+            origin.x = (_drawPoint.x > _drawRect.size.width ? _drawRect.size.width : (_drawPoint.x < 0 ? 0.0 : _drawPoint.x));
+            origin.y = (_drawPoint.y > _drawRect.size.height ? _drawRect.size.height : (_drawPoint.y < 0 ? 0.0 : _drawPoint.y));
+            
             //copy rect starts on the right edge of the image, expands left
             copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
             copyRect.origin.y = _dirtyRect.origin.y;
             copyRect.size = _dirtyRect.size;
         } else {
+            //copy rect starts on the left size of the image, expands right
             copyRect.origin.x = 0;
             copyRect.origin.y = 0;
             copyRect.size = _dirtyRect.size;
@@ -111,15 +113,15 @@
             origin.x = _drawRect.size.width - copyRect.size.width;
             origin.y = _drawRect.origin.y;
         }
+        //draw only the part that is visible
         [_imageToDraw drawAtPoint:origin fromRect:copyRect operation:NSCompositeLuminosity fraction:0.9];
    }
     
-    //4. increment frame number
     _drawPoint.x += _velocity.x;
     _drawPoint.y += _velocity.y;
     
     if((_velocity.x < 0 && (_drawPoint.x+_imageToDraw.size.width) < 0) ||
-      (_velocity.x > 0 && (_drawPoint.x+_imageToDraw.size.width) > _drawRect.size.width)){
+      (_velocity.x > 0 && (_drawPoint.x > (_drawRect.size.width+_imageToDraw.size.width)))){
         //reset
         if(_repeat){
             _drawPoint = _animationOrigin;

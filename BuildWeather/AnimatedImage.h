@@ -17,6 +17,6 @@
 @property (nonatomic) NSPoint velocity;
 
 -(id)initWithRect:(NSRect)rect andImage:(NSImage*)image ;
-
+-(void)animate;
 @end
 

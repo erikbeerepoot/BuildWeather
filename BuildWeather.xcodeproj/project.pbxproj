@@ -19,6 +19,8 @@
 		039D33AE1A82637200BD98EE /* AnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33AC1A82637200BD98EE /* AnimatedImage.h */; };
 		039D33AF1A82637200BD98EE /* AnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D33AD1A82637200BD98EE /* AnimatedImage.m */; };
 		039D33B11A82669A00BD98EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D33B01A82669A00BD98EE /* Foundation.framework */; };
+		039D33EF1A83255600BD98EE /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D33ED1A83255600BD98EE /* Quartz.framework */; };
+		039D33F01A83255600BD98EE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D33EE1A83255600BD98EE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		039D33AC1A82637200BD98EE /* AnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedImage.h; sourceTree = "<group>"; };
 		039D33AD1A82637200BD98EE /* AnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedImage.m; sourceTree = "<group>"; };
 		039D33B01A82669A00BD98EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		039D33ED1A83255600BD98EE /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		039D33EE1A83255600BD98EE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039D33EF1A83255600BD98EE /* Quartz.framework in Frameworks */,
+				039D33F01A83255600BD98EE /* QuartzCore.framework in Frameworks */,
 				039D33B11A82669A00BD98EE /* Foundation.framework in Frameworks */,
 				039D33831A81D74200BD98EE /* AppKit.framework in Frameworks */,
 			);
@@ -54,6 +60,8 @@
 		039D335A1A81CB9F00BD98EE = {
 			isa = PBXGroup;
 			children = (
+				039D33ED1A83255600BD98EE /* Quartz.framework */,
+				039D33EE1A83255600BD98EE /* QuartzCore.framework */,
 				039D33B01A82669A00BD98EE /* Foundation.framework */,
 				039D33821A81D74200BD98EE /* AppKit.framework */,
 				039D33661A81CB9F00BD98EE /* BuildWeather */,
@@ -335,6 +343,7 @@
 				039D33711A81CB9F00BD98EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

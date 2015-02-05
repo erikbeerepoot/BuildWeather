@@ -27,8 +27,6 @@ DrawWeather *weatherDrawer;
         
         [self setAnimationTimeInterval:1/60.0];
         weatherDrawer = [[DrawWeather alloc] init];
-        
-        
     }
     return self;
 }

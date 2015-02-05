@@ -7,6 +7,8 @@
 //
 
 #import "DrawWeather.h"
+#import "AnimatedImage.h"
+
 #import <AppKit/AppKit.h>
 
 @implementation DrawWeather
@@ -56,6 +58,12 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
  */
 -(void)drawSunnyWeatherInRect:(NSRect)rect {
     static int frameCount = 0;
+    static AnimatedImage *image;
+    
+    if(image==nil){
+        image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud1];
+    }
+    
     
     //1a. create background gradient
     NSGradient *sunGradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor whiteColor],0.0, skyLightBlue,0.25,skyBlue,1.0,nil];
@@ -64,8 +72,9 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
     [sunGradient drawInRect:rect relativeCenterPosition:NSMakePoint(-1.0, 1.0)];
     
     //2. move cloud across sky
-    int startX = frameCount*kSunnyAnimationSpeed;
-    [cloud1 drawAtPoint:NSMakePoint(startX, 600.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [image animate];
+    
+//    [cloud1 drawAtPoint:NSMakePoint(startX, 600.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
  
     //dummy comment
     frameCount++;

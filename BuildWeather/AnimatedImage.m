@@ -45,12 +45,13 @@
          *    +       -      top left
          *    +       +      bottom left
          */
+        #warning velocity hardcoded here
         _velocity = NSMakePoint(1.0, 0);
-        _animationOrigin.x = (_velocity.x < FLT_EPSILON) ? _drawRect.origin.x :
-            (_drawRect.origin.x + (_velocity.x < 0.0 ? 1 : -1) * _imageToDraw.size.width);
+        _animationOrigin.x = 1 + ((_velocity.x < FLT_EPSILON) ? _drawRect.origin.x :
+            (_drawRect.origin.x + (_velocity.x < 0.0 ? 1 : -1) * _imageToDraw.size.width));
         
-        _animationOrigin.x = (_velocity.y < FLT_EPSILON) ? _drawRect.origin.y :
-            (_drawRect.origin.y + (_velocity.y < 0.0 ? 1 : -1) * _imageToDraw.size.height);
+        _animationOrigin.y = 1 + ((_velocity.y < FLT_EPSILON) ? _drawRect.origin.y :
+            (_drawRect.origin.y + (_velocity.y < 0.0 ? 1 : -1) * _imageToDraw.size.height));
         
         _drawPoint = _animationOrigin;
     }
@@ -76,18 +77,36 @@
 
     static long frameCount = 0;
     
-    //1. Check if we're out-of-bounds
-    if(NSPointInRect(_drawPoint,_drawRect)){
-        _drawPoint = _animationOrigin;
-    }
-    
-    //2. compute the dirty rect
-    _dirtyRect = NSMakeRect(_drawPoint.x,_drawPoint.y,_imageToDraw.size.width,_imageToDraw.size.height);
-    
-    //3. Draw!
-    [_imageToDraw drawAtPoint:_drawPoint fromRect:NSZeroRect operation:NSCompositeLuminosity fraction:0.9];
+    //1. Check if we're in bounds
+    CGRect intersection = CGRectIntersection(CGRectMake(_drawPoint.x, _drawPoint.y, _imageToDraw.size.width,_imageToDraw.size.height),_drawRect);
+    if(!CGRectIsNull(intersection)){
+        //2. compute the dirty rect
+        _dirtyRect = intersection;
+        
+        
+        NSPoint origin;
+        origin.x = (_drawPoint.x > _drawRect.size.width ? _drawRect.size.width : (_drawPoint.x < 0 ? 0.0 : _drawPoint.x));
+        origin.y = (_drawPoint.y > _drawRect.size.height ? _drawRect.size.height : (_drawPoint.y < 0 ? 0.0 : _drawPoint.y));
+        
+        //Depending on direction of motion, we must copy different parts of the image
+
+        //NO MODS COPY LEFT TO RIGHT
+        //[_imageToDraw drawAtPoint:origin fromRect:_dirtyRect operation:NSCompositeLuminosity fraction:0.9];
+
+        
+        //COPY RIGHT TO LEFT
+        if(
+        NSRect copyRect;
+        copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
+        copyRect.origin.y = _dirtyRect.origin.y;
+        copyRect.size = _dirtyRect.size;
+        [_imageToDraw drawAtPoint:origin fromRect:copyRect operation:NSCompositeLuminosity fraction:0.9];
+        
+   }
     
     //4. increment frame number
+    _drawPoint.x += _velocity.x;
+    _drawPoint.y += _velocity.y;
     frameCount++;
 }
 

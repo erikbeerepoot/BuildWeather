@@ -10,13 +10,43 @@
  *   \  \:\/:/        /  /:/      |  |:|\/     \  \:\_\/        \  \:\     \  \:\/:/     \  \:\/:/     /__/:/
  *    \__\::/        /__/:/       |__|:|~       \  \:\           \__\/      \  \::/       \  \::/      \__\/
  *        ~~         \__\/         \__\|         \__\/                       \__\/         \__\/
- * @name: StatusController.m
+ * @name: Scene.m
  * @author: Erik E. Beerepoot
  * @company: Barefoot Inc.
- * @brief: Class that interacts with the Jenkins API to pull down the build status.
+ * @brief: Scene class. Used to represent a weather scene (or any scene with a gradient background an animated images)
  */
-#import "StatusController.h"
 
-@implementation StatusController
+#import "Scene.h"
+
+@implementation Scene
+
+
+
+/**
+ *  Add an animated image to our private collection
+ *
+ *  @param animatedImage - An animated image to add
+ */
+-(void)addAnimatedImage:(AnimatedImage*)animatedImage{
+    if(animatedImage==nil) return;
+    [_animatedImages addObject:animatedImage];
+}
+
+/**
+ *  Remove an animated image from our private collection
+ *
+ *  @param animatedImage The image
+ */
+-(void)removeAnimatedImage:(AnimatedImage*)animatedImage{
+    if(animatedImage==nil) return;
+    [_animatedImages removeObject:animatedImage];
+}
+
+/**
+ *  Clears the private collection of animated images
+ */
+-(void)removeAllAnimatedImages{
+    [_animatedImages removeAllObjects];
+}
 
 @end

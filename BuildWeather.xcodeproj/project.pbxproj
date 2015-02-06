@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035674671A846FB500FCD436 /* Scene.h in Headers */ = {isa = PBXBuildFile; fileRef = 035674651A846FB500FCD436 /* Scene.h */; };
+		035674681A846FB500FCD436 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 035674661A846FB500FCD436 /* Scene.m */; };
 		039D336A1A81CB9F00BD98EE /* BuildWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33691A81CB9F00BD98EE /* BuildWeatherView.h */; };
 		039D336C1A81CB9F00BD98EE /* BuildWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D336B1A81CB9F00BD98EE /* BuildWeatherView.m */; };
 		039D33761A81D3D300BD98EE /* DrawWeather.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33741A81D3D300BD98EE /* DrawWeather.h */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		035674651A846FB500FCD436 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		035674661A846FB500FCD436 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
 		039D33641A81CB9F00BD98EE /* BuildWeather.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildWeather.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		039D33681A81CB9F00BD98EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		039D33691A81CB9F00BD98EE /* BuildWeatherView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuildWeatherView.h; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 			children = (
 				039D337E1A81D42200BD98EE /* BuildStatus.h */,
 				039D337F1A81D42200BD98EE /* BuildStatus.m */,
+				035674651A846FB500FCD436 /* Scene.h */,
+				035674661A846FB500FCD436 /* Scene.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 			files = (
 				039D337B1A81D40700BD98EE /* StatusController.h in Headers */,
 				039D336A1A81CB9F00BD98EE /* BuildWeatherView.h in Headers */,
+				035674671A846FB500FCD436 /* Scene.h in Headers */,
 				039D33761A81D3D300BD98EE /* DrawWeather.h in Headers */,
 				039D33801A81D42200BD98EE /* BuildStatus.h in Headers */,
 				039D33AE1A82637200BD98EE /* AnimatedImage.h in Headers */,
@@ -220,6 +227,7 @@
 				039D33811A81D42200BD98EE /* BuildStatus.m in Sources */,
 				039D33771A81D3D300BD98EE /* DrawWeather.m in Sources */,
 				039D337C1A81D40700BD98EE /* StatusController.m in Sources */,
+				035674681A846FB500FCD436 /* Scene.m in Sources */,
 				039D336C1A81CB9F00BD98EE /* BuildWeatherView.m in Sources */,
 				039D33AF1A82637200BD98EE /* AnimatedImage.m in Sources */,
 			);

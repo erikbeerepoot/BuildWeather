@@ -1,11 +1,20 @@
-//
-//  AnimatedImage.m
-//  BuildWeather
-//
-//  Created by Erik E. Beerepoot on 2015-02-04.
-//  Copyright (c) 2015 Mediacore Technologies Inc. All rights reserved.
-//
-
+/*
+ *      ___           ___           ___           ___                         ___           ___
+ *     /  /\         /  /\         /  /\         /  /\          ___          /  /\         /  /\          ___
+ *    /  /::\       /  /::\       /  /::\       /  /::\        /  /\        /  /::\       /  /::\        /__/\
+ *   /  /:/\:\     /  /:/\:\     /  /:/\:\     /  /:/\:\      /  /::\      /  /:/\:\     /  /:/\:\       \  \:\
+ *  /  /::\ \:\   /  /::\ \:\   /  /::\ \:\   /  /::\ \:\    /  /:/\:\    /  /:/  \:\   /  /:/  \:\       \__\:\
+ * /__/:/\:\_\:| /__/:/\:\_\:\ /__/:/\:\_\:\ /__/:/\:\ \:\  /  /::\ \:\  /__/:/ \__\:\ /__/:/ \__\:\      /  /::\
+ * \  \:\ \:\/:/ \__\/  \:\/:/ \__\/~|::\/:/ \  \:\ \:\_\/ /__/:/\:\ \:\ \  \:\ /  /:/ \  \:\ /  /:/     /  /:/\:\
+ *  \  \:\_\::/       \__\::/     |  |:|::/   \  \:\ \:\   \__\/  \:\_\/  \  \:\  /:/   \  \:\  /:/     /  /:/__\/
+ *   \  \:\/:/        /  /:/      |  |:|\/     \  \:\_\/        \  \:\     \  \:\/:/     \  \:\/:/     /__/:/
+ *    \__\::/        /__/:/       |__|:|~       \  \:\           \__\/      \  \::/       \  \::/      \__\/
+ *        ~~         \__\/         \__\|         \__\/                       \__\/         \__\/
+ * @name: AnimatedImage.m
+ * @author: Erik E. Beerepoot
+ * @company: Barefoot Inc.
+ * @brief: This class is used to represent and animate an NSImage moving across the screen horizontally, left or right.
+ */
 #import "AnimatedImage.h"
 
 @implementation AnimatedImage

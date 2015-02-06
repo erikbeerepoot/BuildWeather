@@ -1,11 +1,20 @@
-//
-//  DrawWeather.m
-//  BuildWeather
-//
-//  Created by Erik E. Beerepoot on 2015-02-03.
-//  Copyright (c) 2015 Mediacore Technologies Inc. All rights reserved.
-//
-
+/*
+ *      ___           ___           ___           ___                         ___           ___
+ *     /  /\         /  /\         /  /\         /  /\          ___          /  /\         /  /\          ___
+ *    /  /::\       /  /::\       /  /::\       /  /::\        /  /\        /  /::\       /  /::\        /__/\
+ *   /  /:/\:\     /  /:/\:\     /  /:/\:\     /  /:/\:\      /  /::\      /  /:/\:\     /  /:/\:\       \  \:\
+ *  /  /::\ \:\   /  /::\ \:\   /  /::\ \:\   /  /::\ \:\    /  /:/\:\    /  /:/  \:\   /  /:/  \:\       \__\:\
+ * /__/:/\:\_\:| /__/:/\:\_\:\ /__/:/\:\_\:\ /__/:/\:\ \:\  /  /::\ \:\  /__/:/ \__\:\ /__/:/ \__\:\      /  /::\
+ * \  \:\ \:\/:/ \__\/  \:\/:/ \__\/~|::\/:/ \  \:\ \:\_\/ /__/:/\:\ \:\ \  \:\ /  /:/ \  \:\ /  /:/     /  /:/\:\
+ *  \  \:\_\::/       \__\::/     |  |:|::/   \  \:\ \:\   \__\/  \:\_\/  \  \:\  /:/   \  \:\  /:/     /  /:/__\/
+ *   \  \:\/:/        /  /:/      |  |:|\/     \  \:\_\/        \  \:\     \  \:\/:/     \  \:\/:/     /__/:/
+ *    \__\::/        /__/:/       |__|:|~       \  \:\           \__\/      \  \::/       \  \::/      \__\/
+ *        ~~         \__\/         \__\|         \__\/                       \__\/         \__\/
+ * @name: DrawWeather.m
+ * @author: Erik E. Beerepoot
+ * @company: Barefoot Inc.
+ * @brief: This class handles the drawing & animation of different weather patterns
+ */
 #import "DrawWeather.h"
 #import "AnimatedImage.h"
 
@@ -109,6 +118,13 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
  *  Draws the UI overlay displaying all the information
  */
 -(void)drawBuildStatusOverlayInRect:(NSRect)rect {
+    
+}
+
+/**
+ *  Executes the weather animation.
+ */
+-(void)runWeatherAnimation {
     
 }
 @end

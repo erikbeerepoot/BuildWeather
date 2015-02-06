@@ -54,10 +54,17 @@ DrawWeather *weatherDrawer;
 
 - (void)drawRect:(NSRect)rect
 {
-    [super drawRect:rect];
+    static BOOL firstTime = true;
     
-    //depending on the weather, decide which drawing function to call
-    [weatherDrawer drawSunnyWeatherInRect:rect];
+    [super drawRect:rect];
+
+    //DEBUG: Here until we get proper transition logic
+    if(firstTime) {
+        [weatherDrawer drawSunnyWeatherInRect:rect];
+        firstTime=false;
+    }
+    
+    [weatherDrawer runWeatherAnimation:rect];
 }
 
 - (void)animateOneFrame

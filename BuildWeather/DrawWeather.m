@@ -15,8 +15,10 @@
  * @company: Barefoot Inc.
  * @brief: This class handles the drawing & animation of different weather patterns
  */
-#import "DrawWeather.h"
+
 #import "AnimatedImage.h"
+#import "DrawWeather.h"
+#import "Scene.h"
 
 #import <AppKit/AppKit.h>
 
@@ -65,26 +67,18 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
 /**
  *  Draw a background depicting sunny skies!
  */
--(void)drawSunnyWeatherInRect:(NSRect)rect {
-    static int frameCount = 0;
-    static AnimatedImage *image;
+-(void)drawSunnyWeatherInRect:(NSRect)rect
+{    
+    Scene *scene = [[Scene alloc] init];
     
-    if(image==nil){
-        image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud1];
-    }
-    
-    
-    //1a. create background gradient
+    //Create scene properties
+    AnimatedImage *image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud1];
     NSGradient *sunGradient = [[NSGradient alloc] initWithColorsAndLocations:[NSColor whiteColor],0.0, skyLightBlue,0.25,skyBlue,1.0,nil];
     
-    //1. Draw the gradient with the sun in the left-uppermost corner
-    [sunGradient drawInRect:rect relativeCenterPosition:NSMakePoint(-1.0, 1.0)];
-    
-    //2. move cloud across sky
-    [image animate];
-     
-    //dummy comment
-    frameCount++;
+    [scene addAnimatedImage:image];
+    scene.backgroundGradient = sunGradient;
+    _lastScene = _currentScene;
+    _currentScene = scene;
 }
 
 /**
@@ -124,7 +118,22 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
 /**
  *  Executes the weather animation.
  */
--(void)runWeatherAnimation {
+-(void)runWeatherAnimation:(NSRect)rect {
+    if(_currentScene==nil) return;
+    static int frameCount = 0;
     
+    if(_lastScene!=nil || _currentScene!=_lastScene){
+        //do a nice transition
+    }
+    
+    //1. Draw the gradient in the left-uppermost corner
+    [_currentScene.backgroundGradient drawInRect:rect relativeCenterPosition:NSMakePoint(-1.0, 1.0)];
+    
+    //2. move images across background gradient
+    for(int i=0;i<_currentScene.animatedImages.count;i++){
+        [[_currentScene.animatedImages objectAtIndex:i] animate];
+    }
+
+    frameCount++;
 }
 @end

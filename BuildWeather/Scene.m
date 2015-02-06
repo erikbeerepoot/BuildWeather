@@ -21,6 +21,12 @@
 @implementation Scene
 
 
+-(id)init {
+    if(self=[super init]){
+        _animatedImages = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 /**
  *  Add an animated image to our private collection

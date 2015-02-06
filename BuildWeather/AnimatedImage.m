@@ -40,6 +40,7 @@
 -(id)initWithRect:(NSRect)rect andImage:(NSImage*)image {
     if(self = [super init]){
         _imageToDraw = [image copy];
+        _delay = 0;
         _done = NO;
         _repeat = NO;
         
@@ -90,6 +91,9 @@
  *  Implements the logic for animating this image. The animation we do here is a simple translation, with opacity.
  */
 -(void)animate {
+    static frameCount = 0;
+
+    if(frameCount < self.delay) return;
     if(_done || (fabs(_velocity.x)<FLT_EPSILON  && fabs(_velocity.y) < FLT_EPSILON)) return;
     
     //1. Check if we're in bounds
@@ -112,22 +116,22 @@
             //copy rect starts on the right edge of the image, expands left
             if((_drawPoint.x + _imageToDraw.size.width) < _drawRect.size.width){
                 copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
-                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.origin.y = 0;
                 copyRect.size = _dirtyRect.size;
             } else {
                 copyRect.origin.x = 0;
-                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.origin.y = 0;
                 copyRect.size.width = _dirtyRect.size.width;
             }
         } else {
             if((_drawPoint.x + _imageToDraw.size.width) > 0){
                 //copy rect starts on the left size of the image, expands right
                 copyRect.origin.x = 0;
-                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.origin.y = 0;
                 copyRect.size = _dirtyRect.size;
             } else {
                 copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
-                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.origin.y = 0;
                 copyRect.size = _dirtyRect.size;
             }
             origin.x = _drawRect.size.width - copyRect.size.width;
@@ -149,7 +153,7 @@
         }
         _done = YES;
     }
-    
+    frameCount++;
 }
 
 

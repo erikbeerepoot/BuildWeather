@@ -60,7 +60,8 @@ DrawWeather *weatherDrawer;
 
     //DEBUG: Here until we get proper transition logic
     if(firstTime) {
-        [weatherDrawer drawSunnyWeatherInRect:rect];
+        //[weatherDrawer drawSunnyWeatherInRect:rect];
+        [weatherDrawer drawPartlyCloudWeatherInRect:rect];
         firstTime=false;
     }
     

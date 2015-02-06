@@ -41,6 +41,16 @@ NSColor* skyLightBlue;
 NSColor* skyBlue;
 NSColor* happyYellow;
 
+//Colors for cloudy weather
+const float kLightGray[4] = {0.607,0.643,0.650,1.0};
+const float kMidGray[4] = {0.204,0.204,0.204,1.0};
+const float kDarkGray[4] = {0.104,0.104,0.104,1.0};
+
+NSColor* lightGray;
+NSColor* midGray;
+
+
+
 //cloud assets
 NSImage *cloud1, *cloud2, *cloud3, *cloud4;
 
@@ -51,6 +61,10 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
         happyYellow = [NSColor colorWithCalibratedRed:kHappyYellow[0] green:kHappyYellow[1] blue:kHappyYellow[2] alpha:kHappyYellow[3]];
         skyBlue = [NSColor colorWithCalibratedRed:kSkyBlue[0] green:kSkyBlue[1] blue:kSkyBlue[2] alpha:kSkyBlue[3]];
         skyLightBlue = [NSColor colorWithCalibratedRed:kSkyLightBlue[0] green:kSkyLightBlue[1] blue:kSkyLightBlue[2] alpha:kSkyLightBlue[3]];
+        lightGray = [NSColor colorWithCalibratedRed:kLightGray[0] green:kLightGray[1] blue:kLightGray[2] alpha:kLightGray[3]];
+        midGray = [NSColor colorWithCalibratedRed:kMidGray[0] green:kMidGray[1] blue:kMidGray[2] alpha:kMidGray[3]];
+
+        
         
         //load clouds
         cloud1 = [[NSImage alloc] initWithContentsOfFile:@"/Users/erik/Pictures/clouds/5.jp2"];
@@ -68,7 +82,7 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
  *  Draw a background depicting sunny skies!
  */
 -(void)drawSunnyWeatherInRect:(NSRect)rect
-{    
+{
     Scene *scene = [[Scene alloc] init];
     
     //Create scene properties
@@ -85,27 +99,46 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
  *  Draws a background depicting partially cloudy weather
  */
 -(void)drawPartlyCloudWeatherInRect:(NSRect)rect {
-    //1. create background gradient
+    Scene *scene = [[Scene alloc] init];
     
-    //2. move a few clouds across sky
+    //Create scene properties
+  //  AnimatedImage *image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud1];
+
+    //draw second cloud above first one
+    
+    AnimatedImage *image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    [scene addAnimatedImage:image2];
+    
+    rect.origin.y += 350;
+    image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    image2.delay = 100;
+    
+    rect.origin.y += 350;
+    image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    image2.delay = 500;
+    
+    [scene addAnimatedImage:image2];
+    
+    NSGradient *cloudyGradient = [[NSGradient alloc] initWithColorsAndLocations:lightGray,0.0,midGray,1.0,nil];
+    
+//    [scene addAnimatedImage:image];
+    [scene addAnimatedImage:image2];
+    scene.backgroundGradient = cloudyGradient;
+    _lastScene = _currentScene;
+    _currentScene = scene;
 }
 
 /**
  *  Draws a background depicting cloudy weather
  */
 -(void)drawCloudyWeatherInRect:(NSRect)rect {
-    //1. create background gradient
-    
-    //2. move lots of clouds
 }
 
 /**
  *  Draws a background depicting stormy weather
  */
 -(void)drawStormyWeatherInRect:(NSRect)rect {
-    //1. create background gradient
-    
-    //2. move tons of clouds across the sky with lightning
+
 }
 
 /**

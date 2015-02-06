@@ -47,7 +47,7 @@
          *    +       +      bottom left
          */
         #warning velocity hardcoded here
-        _velocity = NSMakePoint(10.0, 0);
+        _velocity = NSMakePoint(1.0, 0);
         if(fabs(_velocity.x) < FLT_EPSILON){
             //draw at the origin (i.e. just show image)
             _animationOrigin.x = 1 + _drawRect.origin.x;
@@ -101,15 +101,26 @@
             origin.y = (_drawPoint.y > _drawRect.size.height ? _drawRect.size.height : (_drawPoint.y < 0 ? 0.0 : _drawPoint.y));
             
             //copy rect starts on the right edge of the image, expands left
-            copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
-            copyRect.origin.y = _dirtyRect.origin.y;
-            copyRect.size = _dirtyRect.size;
+            if((_drawPoint.x + _imageToDraw.size.width) < _drawRect.size.width){
+                copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
+                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.size = _dirtyRect.size;
+            } else {
+                copyRect.origin.x = 0;
+                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.size.width = _dirtyRect.size.width;
+            }
         } else {
-            //copy rect starts on the left size of the image, expands right
-            copyRect.origin.x = 0;
-            copyRect.origin.y = 0;
-            copyRect.size = _dirtyRect.size;
-            
+            if((_drawPoint.x + _imageToDraw.size.width) > 0){
+                //copy rect starts on the left size of the image, expands right
+                copyRect.origin.x = 0;
+                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.size = _dirtyRect.size;
+            } else {
+                copyRect.origin.x = _imageToDraw.size.width - _dirtyRect.size.width;
+                copyRect.origin.y = _dirtyRect.origin.y;
+                copyRect.size = _dirtyRect.size;
+            }
             origin.x = _drawRect.size.width - copyRect.size.width;
             origin.y = _drawRect.origin.y;
         }
@@ -121,7 +132,7 @@
     _drawPoint.y += _velocity.y;
     
     if((_velocity.x < 0 && (_drawPoint.x+_imageToDraw.size.width) < 0) ||
-      (_velocity.x > 0 && (_drawPoint.x > (_drawRect.size.width+_imageToDraw.size.width)))){
+      (_velocity.x > 0 && (_drawPoint.x > _drawRect.size.width))){
         //reset
         if(_repeat){
             _drawPoint = _animationOrigin;

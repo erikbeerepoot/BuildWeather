@@ -73,9 +73,7 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
     
     //2. move cloud across sky
     [image animate];
-    
-//    [cloud1 drawAtPoint:NSMakePoint(startX, 600.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
- 
+     
     //dummy comment
     frameCount++;
 }

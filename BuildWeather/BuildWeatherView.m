@@ -25,7 +25,7 @@ DrawWeather *weatherDrawer;
         self.wantsLayer = true;
         self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawCrossfade;
         
-        [self setAnimationTimeInterval:1/60.0];
+        [self setAnimationTimeInterval:1/30.0];
         weatherDrawer = [[DrawWeather alloc] init];
     }
     return self;

@@ -22,11 +22,11 @@
 #import <Foundation/Foundation.h>
 
 //connection parameters
-const int portnum = 8088;
-const NSString *kJenkinsServerURL = @"192.168.1.10";
+int kPortnum;
+NSString *kJenkinsServerURL;
 
 //API endpoints
-const NSString *kLastBuildEndpoint = @"/lastBuild/api/json";
-const NSString *kListJobsEndpoint = @"/api/xml?tree=jobs[name]";
+NSString *kLastBuildEndpoint;
+NSString *kListJobsEndpoint;
 
 #endif

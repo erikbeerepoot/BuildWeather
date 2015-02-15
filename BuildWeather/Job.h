@@ -3,6 +3,6 @@
 
 @interface Job : NSObject
 
-@property (nonatomic, retain, readonly) Build *lastBuild;
-
+@property (nonatomic, retain, readonly) Build    *lastBuild;
+@property (nonatomic, retain, readonly) NSString *name;
 @end

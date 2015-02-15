@@ -8,5 +8,9 @@
 
 #import "constants.h"
 
+NSString *kJenkinsServerURL = @"192.168.1.10";
+int kPortnum = 8088;
 
-//    kJenkinsServerURL = @"192.168.1.10";
+NSString *kLastBuildEndpoint = @"/lastBuild/api/json";
+NSString *kListJobsEndpoint = @"/api/xml?tree=jobs[name]";
+

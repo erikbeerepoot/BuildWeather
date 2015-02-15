@@ -16,6 +16,8 @@
  * @brief: Class that interacts with the Jenkins API to pull down the build status.
  */
 #import "StatusController.h"
+#import "constants.h"
+#import "Job.h"
 
 @implementation StatusController
 
@@ -40,7 +42,28 @@
  * @param: job
  */
 -(void)queryJobStatusForJob:(Job*)job {
-    //1. Send job status request
+    //1. Create new URL session
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate:nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    //2. Create query URL
+    NSString *jobStatusEndpoint = [kJenkinsServerURL stringByAppendingString:[job.name stringByAppendingString:kLastBuildEndpoint]];
+    
+    //3. Send job status request
+    [[delegateFreeSession dataTaskWithURL:[NSURL URLWithString:jobStatusEndpoint] completionHandler:^(NSData *data,
+                                                                                                      NSURLResponse *response,
+                                                                                                      NSError *error) {
+        //call the processing method using GCD
+        dispatch_async(dispatch_get_main_queue(),^{
+            [self statusCallbackWithData:data response:response andError:error];
+        });
+        
+    }] resume];
+    
+}
+
+-(void)statusCallbackWithData:(NSData*)data response:(NSURLResponse*)response andError:(NSError*)error {
+  
 }
 
 

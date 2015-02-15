@@ -19,4 +19,28 @@
 
 @implementation StatusController
 
+-(id)init {
+    if(self = [super init]){
+        //setup timer
+    }
+    return self;
+}
+
+/**
+ * @name: parseBuildList
+ * @brief: Parses the list of jobs
+ */
+-(void)parseJobList {
+    
+}
+
+/**
+ * @name: updateJobInfoForJob
+ */
+-(void)updateJobInfoForJob:(Job*)job{
+    
+}
+
+
+
 @end

@@ -91,7 +91,7 @@
  *  Implements the logic for animating this image. The animation we do here is a simple translation, with opacity.
  */
 -(void)animate {
-    static frameCount = 0;
+    static int frameCount = 0;
 
     if(frameCount < self.delay) return;
     if(_done || (fabs(_velocity.x)<FLT_EPSILON  && fabs(_velocity.y) < FLT_EPSILON)) return;

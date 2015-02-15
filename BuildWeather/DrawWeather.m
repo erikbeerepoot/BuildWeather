@@ -83,6 +83,7 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
  */
 -(void)drawSunnyWeatherInRect:(NSRect)rect
 {
+    _lastScene = _currentScene;
     Scene *scene = [[Scene alloc] init];
     
     //Create scene properties
@@ -102,27 +103,23 @@ NSImage *cloud1, *cloud2, *cloud3, *cloud4;
     Scene *scene = [[Scene alloc] init];
     
     //Create scene properties
-  //  AnimatedImage *image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud1];
 
-    //draw second cloud above first one
-    
-    AnimatedImage *image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
-    [scene addAnimatedImage:image2];
-    
-    rect.origin.y += 350;
-    image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
-    image2.delay = 100;
+    //draw some clouds
+    AnimatedImage *image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    [scene addAnimatedImage:image];
     
     rect.origin.y += 350;
-    image2 = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
-    image2.delay = 500;
+    image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    image.delay = 100;
+    [scene addAnimatedImage:image];
     
-    [scene addAnimatedImage:image2];
+    rect.origin.y += 350;
+    image = [[AnimatedImage alloc] initWithRect:rect andImage:cloud2];
+    image.delay = 500;
+    [scene addAnimatedImage:image];
     
+    //set background gradient
     NSGradient *cloudyGradient = [[NSGradient alloc] initWithColorsAndLocations:lightGray,0.0,midGray,1.0,nil];
-    
-//    [scene addAnimatedImage:image];
-    [scene addAnimatedImage:image2];
     scene.backgroundGradient = cloudyGradient;
     _lastScene = _currentScene;
     _currentScene = scene;

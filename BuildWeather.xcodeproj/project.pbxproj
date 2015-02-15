@@ -11,14 +11,16 @@
 		035674681A846FB500FCD436 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 035674661A846FB500FCD436 /* Scene.m */; };
 		0367AB6A1A8FE65B0043D956 /* constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 0367AB681A8FE65B0043D956 /* constants.h */; };
 		0367AB6B1A8FE65B0043D956 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367AB691A8FE65B0043D956 /* constants.m */; };
+		0367AB6E1A91126D0043D956 /* Build.h in Headers */ = {isa = PBXBuildFile; fileRef = 0367AB6C1A91126D0043D956 /* Build.h */; };
+		0367AB6F1A91126D0043D956 /* Build.m in Sources */ = {isa = PBXBuildFile; fileRef = 0367AB6D1A91126D0043D956 /* Build.m */; };
 		039D336A1A81CB9F00BD98EE /* BuildWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33691A81CB9F00BD98EE /* BuildWeatherView.h */; };
 		039D336C1A81CB9F00BD98EE /* BuildWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D336B1A81CB9F00BD98EE /* BuildWeatherView.m */; };
 		039D33761A81D3D300BD98EE /* DrawWeather.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33741A81D3D300BD98EE /* DrawWeather.h */; };
 		039D33771A81D3D300BD98EE /* DrawWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D33751A81D3D300BD98EE /* DrawWeather.m */; };
 		039D337B1A81D40700BD98EE /* StatusController.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33791A81D40700BD98EE /* StatusController.h */; };
 		039D337C1A81D40700BD98EE /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D337A1A81D40700BD98EE /* StatusController.m */; };
-		039D33801A81D42200BD98EE /* BuildStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D337E1A81D42200BD98EE /* BuildStatus.h */; };
-		039D33811A81D42200BD98EE /* BuildStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D337F1A81D42200BD98EE /* BuildStatus.m */; };
+		039D33801A81D42200BD98EE /* Job.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D337E1A81D42200BD98EE /* Job.h */; };
+		039D33811A81D42200BD98EE /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D337F1A81D42200BD98EE /* Job.m */; };
 		039D33831A81D74200BD98EE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D33821A81D74200BD98EE /* AppKit.framework */; };
 		039D33AE1A82637200BD98EE /* AnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 039D33AC1A82637200BD98EE /* AnimatedImage.h */; };
 		039D33AF1A82637200BD98EE /* AnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 039D33AD1A82637200BD98EE /* AnimatedImage.m */; };
@@ -32,6 +34,8 @@
 		035674661A846FB500FCD436 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
 		0367AB681A8FE65B0043D956 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		0367AB691A8FE65B0043D956 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
+		0367AB6C1A91126D0043D956 /* Build.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Build.h; sourceTree = "<group>"; };
+		0367AB6D1A91126D0043D956 /* Build.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Build.m; sourceTree = "<group>"; };
 		039D33641A81CB9F00BD98EE /* BuildWeather.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildWeather.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		039D33681A81CB9F00BD98EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		039D33691A81CB9F00BD98EE /* BuildWeatherView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuildWeatherView.h; sourceTree = "<group>"; };
@@ -40,8 +44,8 @@
 		039D33751A81D3D300BD98EE /* DrawWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawWeather.m; sourceTree = "<group>"; };
 		039D33791A81D40700BD98EE /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
 		039D337A1A81D40700BD98EE /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
-		039D337E1A81D42200BD98EE /* BuildStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildStatus.h; sourceTree = "<group>"; };
-		039D337F1A81D42200BD98EE /* BuildStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildStatus.m; sourceTree = "<group>"; };
+		039D337E1A81D42200BD98EE /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		039D337F1A81D42200BD98EE /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		039D33821A81D74200BD98EE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		039D33AC1A82637200BD98EE /* AnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedImage.h; sourceTree = "<group>"; };
 		039D33AD1A82637200BD98EE /* AnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedImage.m; sourceTree = "<group>"; };
@@ -147,10 +151,12 @@
 		039D337D1A81D40C00BD98EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				039D337E1A81D42200BD98EE /* BuildStatus.h */,
-				039D337F1A81D42200BD98EE /* BuildStatus.m */,
+				039D337E1A81D42200BD98EE /* Job.h */,
+				039D337F1A81D42200BD98EE /* Job.m */,
 				035674651A846FB500FCD436 /* Scene.h */,
 				035674661A846FB500FCD436 /* Scene.m */,
+				0367AB6C1A91126D0043D956 /* Build.h */,
+				0367AB6D1A91126D0043D956 /* Build.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,7 +172,8 @@
 				039D336A1A81CB9F00BD98EE /* BuildWeatherView.h in Headers */,
 				035674671A846FB500FCD436 /* Scene.h in Headers */,
 				039D33761A81D3D300BD98EE /* DrawWeather.h in Headers */,
-				039D33801A81D42200BD98EE /* BuildStatus.h in Headers */,
+				039D33801A81D42200BD98EE /* Job.h in Headers */,
+				0367AB6E1A91126D0043D956 /* Build.h in Headers */,
 				039D33AE1A82637200BD98EE /* AnimatedImage.h in Headers */,
 				0367AB6A1A8FE65B0043D956 /* constants.h in Headers */,
 			);
@@ -239,8 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				039D33811A81D42200BD98EE /* BuildStatus.m in Sources */,
+				039D33811A81D42200BD98EE /* Job.m in Sources */,
 				039D33771A81D3D300BD98EE /* DrawWeather.m in Sources */,
+				0367AB6F1A91126D0043D956 /* Build.m in Sources */,
 				039D337C1A81D40700BD98EE /* StatusController.m in Sources */,
 				0367AB6B1A8FE65B0043D956 /* constants.m in Sources */,
 				035674681A846FB500FCD436 /* Scene.m in Sources */,

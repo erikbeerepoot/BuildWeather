@@ -17,7 +17,6 @@
  */
 
 #import "BuildWeatherView.h"
-#import "BuildStatus.h"
 #import "DrawWeather.h"
 
 @implementation BuildWeatherView

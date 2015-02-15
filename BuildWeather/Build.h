@@ -10,38 +10,20 @@
  *   \  \:\/:/        /  /:/      |  |:|\/     \  \:\_\/        \  \:\     \  \:\/:/     \  \:\/:/     /__/:/
  *    \__\::/        /__/:/       |__|:|~       \  \:\           \__\/      \  \::/       \  \::/      \__\/
  *        ~~         \__\/         \__\|         \__\/                       \__\/         \__\/
- * @name: StatusController.m
+ * @name: Build.h
  * @author: Erik E. Beerepoot
  * @company: Barefoot Inc.
- * @brief: Class that interacts with the Jenkins API to pull down the build status.
+ * @brief: Model class representing a Jenkins build.
  */
-#import "StatusController.h"
+#import <Foundation/Foundation.h>
 
-@implementation StatusController
+@interface Build : NSObject
 
--(id)init {
-    if(self = [super init]){
-        //setup timer
-    }
-    return self;
-}
+@property (nonatomic,retain,readonly)   NSString  *name;
+@property (nonatomic,readonly)          BOOL      result;
+@property (nonatomic,readonly)          int       number;
 
-/**
- * @name: parseJobList
- * @brief: Parses the list of jobs from JSON into an array
- */
--(void)parseJobList:(NSData*)jobData {
-    
-}
-
-/**
- * @name:  queryJobStatusForJob
- * @brief: Queries jenkins for the status of a job
- * @param: job
- */
--(void)queryJobStatusForJob:(Job*)job {
-    //1. Send job status request
-}
-
+//New build with the data passed to this method
+-(void)parseBuildData:(NSData*)data;
 
 @end
